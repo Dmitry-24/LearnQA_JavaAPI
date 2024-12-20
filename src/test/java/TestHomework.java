@@ -45,9 +45,47 @@ public class TestHomework {
     }
 
 
+    @Test
+    public void homeworkEx7(){
 
+        Response response = RestAssured
+                .given()
+                .redirects()
+                .follow(false)
+                .when()
+                .get("https://playground.learnqa.ru/api/long_redirect")
+                .andReturn();
 
+        int statusCode = response.getStatusCode();
+        String location = response.getHeader("Location");
+        System.out.println(statusCode);
+        System.out.println(location);
 
+        while (statusCode != 200) {
+                     response = RestAssured
+                    .given()
+                    .redirects()
+                    .follow(false)
+                    .when()
+                    .get(location)
+                    .andReturn();
+            statusCode = response.getStatusCode();
+            location = response.getHeader("Location");
+            System.out.println(statusCode);
+            System.out.println(location);
+
+        }
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
