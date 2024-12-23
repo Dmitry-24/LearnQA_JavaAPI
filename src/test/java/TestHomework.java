@@ -3,10 +3,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLOutput;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class TestHomework {
 
@@ -116,6 +113,83 @@ public class TestHomework {
             System.out.println("Текущий статус задачи = " + status);
             System.out.println("Результат задачи = " +result);
         }
+
+    }
+
+
+
+    @Test
+    public void homeworkEx9() {
+        List<String> passwords = new ArrayList<>();
+        passwords.add("123456");
+        passwords.add("123456789");
+        passwords.add("qwerty");
+        passwords.add("password");
+        passwords.add("1234567");
+        passwords.add("12345678");
+        passwords.add("12345");
+        passwords.add("iloveyou");
+        passwords.add("111111");
+        passwords.add("123123");
+        passwords.add("abc123");
+        passwords.add("qwerty123");
+        passwords.add("1q2w3e4r");
+        passwords.add("qwertyuiop");
+        passwords.add("555555");
+        passwords.add("lovely");
+        passwords.add("7777777");
+        passwords.add("welcome");
+        passwords.add("888888");
+        passwords.add("princess");
+        passwords.add("dragon");
+        passwords.add("password1");
+        passwords.add("123qwe");
+
+
+        Map<String, String> authParams = new HashMap<>();
+
+        for (String pass : passwords) {
+            authParams.put("login", "super_admin");
+            authParams.put("password", pass);
+            Response authResponse = RestAssured
+                    .given()
+                    .body(authParams)
+                    .when()
+                    .post("https://playground.learnqa.ru/ajax/api/get_secret_password_homework")
+                    .andReturn();
+
+            String authCookie = authResponse.getCookie("auth_cookie");
+
+
+            Map<String, String> cookie = new HashMap<>();
+            cookie.put("auth_cookie", authCookie);
+
+            Response checkAuthCookie = RestAssured
+                    .given()
+                    .body(authParams)
+                    .cookies(cookie)
+                    .when()
+                    .post("https://playground.learnqa.ru/ajax/api/check_auth_cookie")
+                    .andReturn();
+
+            String checkResponse = checkAuthCookie.body().asString();
+            if (checkResponse.equals("You are authorized")) {
+                System.out.println(checkResponse);
+                System.out.println(pass);
+                break;
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
 
     }
 
