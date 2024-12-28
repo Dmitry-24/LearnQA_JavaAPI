@@ -191,7 +191,13 @@ public class TestHomework extends BaseTestCase {
     }
 
 
+    @Test
+    public void homeworkEx10() {
 
+        String text = "Java it's cool!";
+        int lengthText = text.length();
+        assertEquals(15,lengthText,"Text more than 15 characters ");
+    }
 
 
 }
