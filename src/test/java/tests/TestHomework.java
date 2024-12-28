@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 import lib.BaseTestCase;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -200,7 +202,24 @@ public class TestHomework extends BaseTestCase {
     }
 
 
+    @Test
+    public void homeworkEx11() {
+
+        Response response = RestAssured
+                .get("https://playground.learnqa.ru/api/homework_cookie")
+                .andReturn();
+
+        String cookie = response.getCookie("HomeWork");
+        assertEquals("hw_value", cookie, "Wrong cookie value");
+
+    }
+
+
+
 }
+
+
+
 
 
 
