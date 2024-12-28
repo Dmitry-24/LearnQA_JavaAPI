@@ -6,6 +6,9 @@ import io.restassured.response.Response;
 import lib.BaseTestCase;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.*;
 
 public class TestHomework extends BaseTestCase {
@@ -185,16 +188,11 @@ public class TestHomework extends BaseTestCase {
 
         }
 
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
 
 }
 
