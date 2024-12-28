@@ -1,11 +1,13 @@
 import io.restassured.RestAssured;
-import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class RestAssuredTest {
@@ -81,8 +83,8 @@ public class RestAssuredTest {
                 .andReturn();
         response.prettyPrint();
 
-        Headers responseHeaders = response.getHeaders();
-        System.out.println(responseHeaders);
+        //Headers responseHeaders = response.getHeaders();
+        //System.out.println(responseHeaders);
     }
 
 
@@ -118,6 +120,23 @@ public class RestAssuredTest {
         responseForCheck.print();
     }
 
+    @Test
+    public void testFor200 () {
+        Response response = RestAssured
+                .get("https://playground.learnqa.ru/api/map")
+                .andReturn();
+        assertEquals(200, response.statusCode(), "Unexpected status code");
+    }
+
+
+
+    @Test
+    public void testFor404() {
+        Response response = RestAssured
+                .get("https://playground.learnqa.ru/api/map2")
+                .andReturn();
+        assertEquals(404, response.statusCode(), "Unexpected status code");
+    }
 
 
 }
