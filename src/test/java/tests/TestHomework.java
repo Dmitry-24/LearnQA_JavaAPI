@@ -216,6 +216,21 @@ public class TestHomework extends BaseTestCase {
 
 
 
+
+    @Test
+    public void homeworkEx12() {
+
+        Response response = RestAssured
+                .get("https://playground.learnqa.ru/api/homework_header")
+                .andReturn();
+
+        String header = response.getHeader("x-secret-homework-header");
+        assertEquals("Some secret value", header, "Wrong header value");
+
+    }
+
+
+
 }
 
 
