@@ -53,4 +53,15 @@ public class ApiCoreRequests {
 
 
 
+    @Step("Create user POST-request")
+    public Response createUserPostRequest(String url, Map<String, String> userData) {
+        return given()
+                .filter(new AllureRestAssured())
+                .body(userData)
+                .post(url)
+                .andReturn();
+    }
+
+
+
 }
