@@ -64,4 +64,14 @@ public class ApiCoreRequests {
 
 
 
+    @Step("User GET-request")
+    public Response getUserWithId3Data(String url, String token, String cookie) {
+        return given()
+                .filter(new AllureRestAssured())
+                .header(new Header("x-csrf-token", token))
+                .cookie("auth_sid", cookie)
+                .get(url)
+                .andReturn();
+
+    }
 }
