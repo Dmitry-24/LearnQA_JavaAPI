@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BaseTestCase {
 
+
+    protected String baseUrl = "https://playground.learnqa.ru/api_dev";
+
     protected String getHeader(Response Response, String name){
         Headers headers = Response.getHeaders();
 
