@@ -100,4 +100,16 @@ public class ApiCoreRequests {
     }
 
 
+
+    @Step("Make User DELETE-request")
+    public Response userDeleteRequest(String url, String header, String cookie){
+        return  given()
+                .given()
+                .header("x-csrf-token", header)
+                .cookie("auth_sid", cookie)
+                .delete(url)
+                .andReturn();
+    }
+
+
 }
