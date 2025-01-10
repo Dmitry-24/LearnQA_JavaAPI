@@ -1,5 +1,7 @@
 package tests;
 
+
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -13,10 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 
 
@@ -111,6 +109,7 @@ public class UserEditTests extends BaseTestCase {
 
     @Description("This test try edit another user")
     @DisplayName("Negative test with another user")
+    @Flaky
     @Test
     public void EditAsOtherUserTest() {
         //GENERATE AUTH USER
@@ -182,6 +181,7 @@ public class UserEditTests extends BaseTestCase {
 
     @Description("This test try edit short firstName")
     @DisplayName("Negative test with short firstName")
+    @Severity(value = SeverityLevel.MINOR)
     @Test
     public void EditShortFirstNameTest(){
         //GENERATE USER

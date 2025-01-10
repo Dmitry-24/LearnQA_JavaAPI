@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -16,9 +17,6 @@ import  lib.ApiCoreRequests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 
 
@@ -62,6 +60,7 @@ public class UserAuthTest extends BaseTestCase {
     @Test
     @Description("This test successfully authorization user by email and password")
     @DisplayName("Test positive auth user")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testAuthUser () {
 
         Response responseCheckAuth = apiCoreRequests

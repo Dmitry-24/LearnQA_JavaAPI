@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.Assertions;
@@ -76,6 +77,7 @@ public class UserGetTests extends BaseTestCase {
 
     @Description("This test get username only if user authorized and get another user data")
     @DisplayName("Test get another user data")
+    @Owner("My homework test")
     @Test
     public void testGetUserDetailsAuthAsAnotherUser() {
         Map<String, String> authData = new HashMap<>();

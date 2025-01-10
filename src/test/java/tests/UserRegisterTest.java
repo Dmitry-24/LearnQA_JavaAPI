@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Owner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.Assertions;
@@ -72,6 +73,7 @@ public class UserRegisterTest extends BaseTestCase {
 
     @Description("Try create user with wrong email")
     @DisplayName("Negative test with wrong email")
+    @Owner("My homework test")
     @Test
     public void testCreateUserWithWrongEmail() {
         String email = "vinkotovexample.com";
@@ -91,6 +93,7 @@ public class UserRegisterTest extends BaseTestCase {
 
     @Description("Try create user with short username")
     @DisplayName("Negative test with wrong username")
+    @Owner("My homework test")
     @Test
     public void testCreateUserWithShortUsername() {
         String username = "a";
@@ -110,6 +113,7 @@ public class UserRegisterTest extends BaseTestCase {
 
     @Description("Try create user with long username")
     @DisplayName("Negative test with wrong username")
+    @Owner("My homework test")
     @Test
     public void testCreateUserWithLongUsername() {
         String username = "Как принято считать, явные признаки победы институционализации набирают популярность среди определенных слоев населения, а значит, должны быть обнародованы. Предварительные выводы неутешительны: глубокий уровень погружения не даёт нам иного выбора, кроме определения вывода текущих активов.";
@@ -128,6 +132,7 @@ public class UserRegisterTest extends BaseTestCase {
 
     @Description("Try create user with empty field")
     @DisplayName("Negative test with empty field")
+    @Owner("My homework test")
     @ParameterizedTest
     @ValueSource(strings = {"email", "password", "username", "firstName", "lastName"})
     public void testCreateUserWithEmptyField(String field) {

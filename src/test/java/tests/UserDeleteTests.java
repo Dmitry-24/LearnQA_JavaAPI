@@ -1,14 +1,15 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
+
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 @Epic("User delete cases")
 @Feature("User delete")
 
-
+@Owner("My homework test")
 public class UserDeleteTests extends BaseTestCase {
 
 
@@ -78,6 +79,7 @@ public class UserDeleteTests extends BaseTestCase {
 
     @Description("This test try delete another user")
     @DisplayName("Negative test delete another user")
+    @Flaky
     @Test
     public void DeleteAsOtherUserTest() {
         //GENERATE AUTH USER
@@ -110,10 +112,5 @@ public class UserDeleteTests extends BaseTestCase {
         Assertions.assertJsonByName(responseDeleteUser, "error", "This user can only delete their own account.");
 
     }
-
-
-
-
-
 
 }
